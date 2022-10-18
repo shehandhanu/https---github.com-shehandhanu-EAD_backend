@@ -18,7 +18,7 @@ exports.addRoute = async (req, res) => {
     })
 }
 
-//Get All Routes
+//Get All stations
 exports.getAllStations = async (req, res) => {
 
     const stations = await Station.find()
