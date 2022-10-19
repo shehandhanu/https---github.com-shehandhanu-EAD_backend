@@ -3,7 +3,9 @@ const router = express.Router();
 
 const { addRoute,
     getAllStations,
-    updateQueue } = require('../controllers/Station.Controller');
+    updateQueueIn,
+    updateQueueOut,
+    updateFuel } = require('../controllers/Station.Controller');
 const { isAuthenticatedUser, authorizeRoles } = require('../utils/authenticator')
 
 //Add Journey
@@ -12,8 +14,14 @@ router.route('/addjourney').post(addRoute);
 //Get All Journey
 router.route('/getalljourney').get(getAllStations)
 
-//Update Journey
-router.route('/updatejourney/:id').put(updateQueue);
+//Update updateQueueIn
+router.route('/updatequeuein/:id').put(isAuthenticatedUser, updateQueueIn);
+
+//Update updateQueueOut
+router.route('/updatequeueout/:id').put(isAuthenticatedUser, updateQueueOut);
+
+//Update Fuel
+router.route('/updatefuel/:id').put(updateFuel);
 
 
 module.exports = router;

@@ -43,14 +43,10 @@ const userSchema = new mongoose.Schema({
         type: mongoose.Schema.ObjectId,
         ref: 'Station'
     },
-    queueID: [
-        {
-            station: {
-                type: mongoose.Schema.ObjectId,
-                ref: 'Station'
-            }
-        }
-    ],
+    queueID: {
+        type: String,
+    }
+
 })
 
 //Encript password

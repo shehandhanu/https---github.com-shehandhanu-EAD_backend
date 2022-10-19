@@ -6,7 +6,11 @@ const stationSchema = new mongoose.Schema({
         required: [true, 'Please Enter station name'],
         maxLength: [50, 'Route cannot exceed 10 characters']
     },
-    fuelStatus: {
+    fuelStatusPetrol: {
+        type: Boolean,
+        default: false
+    },
+    fuelStatusDiesel: {
         type: Boolean,
         default: false
     },
@@ -16,7 +20,13 @@ const stationSchema = new mongoose.Schema({
     queue: {
         type: Number,
         default: 0
-    }
+    },
+    queueID: [
+        {
+            type: mongoose.Schema.ObjectId,
+            ref: 'User'
+        }
+    ]
 
 })
 

@@ -35,7 +35,12 @@ exports.registerUser = async (req, res, next) => {
         stationID = station._id
     }
 
-    const request = { firstName, lastName, password, email, phoneNumber, role, stationID }
+    let request = {}
+    if (role == 'owner') {
+        request = { firstName, lastName, password, email, phoneNumber, role, stationID }
+    } else {
+        request = { firstName, lastName, password, email, phoneNumber }
+    }
 
     const user = await User.create(request)
 
@@ -126,7 +131,7 @@ exports.updateProfile = async (req, res) => {
 //get current user  => /api/v1/user
 exports.getUserProfile = async (req, res, next) => {
 
-    let user = await User.findById(req.user.id).populate('trips.tripID')
+    let user = await User.findById(req.user.id)
 
     if (!user) {
         return res.status(401).json({
