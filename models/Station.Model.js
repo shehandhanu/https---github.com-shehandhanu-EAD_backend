@@ -16,6 +16,7 @@ const stationSchema = new mongoose.Schema({
     },
     fuelAddTime: {
         type: Date,
+        default: Date.now()
     },
     queue: {
         type: Number,
