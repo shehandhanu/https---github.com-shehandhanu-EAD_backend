@@ -16,7 +16,7 @@ router.route('/addjourney').post(addRoute);
 router.route('/getalljourney').get(getAllStations)
 
 //Get Stations
-router.route('/getstation').get(getStation)
+router.route('/getstation/:id').get(getStation)
 
 //Update updateQueueIn
 router.route('/updatequeuein/:id').put(isAuthenticatedUser, updateQueueIn);
