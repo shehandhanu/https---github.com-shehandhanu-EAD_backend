@@ -5,7 +5,8 @@ const { addRoute,
     getAllStations,
     updateQueueIn,
     updateQueueOut,
-    updateFuel } = require('../controllers/Station.Controller');
+    updateFuel,
+    getStation } = require('../controllers/Station.Controller');
 const { isAuthenticatedUser, authorizeRoles } = require('../utils/authenticator')
 
 //Add Journey
@@ -13,6 +14,9 @@ router.route('/addjourney').post(addRoute);
 
 //Get All Journey
 router.route('/getalljourney').get(getAllStations)
+
+//Get Stations
+router.route('/getstation').get(getStation)
 
 //Update updateQueueIn
 router.route('/updatequeuein/:id').put(isAuthenticatedUser, updateQueueIn);

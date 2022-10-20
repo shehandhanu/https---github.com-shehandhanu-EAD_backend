@@ -36,6 +36,24 @@ exports.getAllStations = async (req, res) => {
 
 }
 
+//Get station
+exports.getStation = async (req, res) => {
+
+    const stations = await Station.findById(req.params.id)
+
+    if (!stations) {
+        res.status(201).json({
+            success: false
+        })
+    }
+
+    res.status(200).json({
+        success: true,
+        station: stations
+    })
+
+}
+
 //update route 
 exports.updateQueueIn = async (req, res) => {
 
@@ -97,7 +115,9 @@ exports.updateFuel = async (req, res) => {
 
     let station = await Station.findById(req.params.id)
 
-    const { diesel, petrol } = req.body
+    const { diesel, petrol, fuelAddTime } = req.body
+
+    station = await Station.findByIdAndUpdate(req.params.id, { "fuelAddTime": fuelAddTime })
 
     if (diesel != null) {
         let station = await Station.findByIdAndUpdate(req.params.id, { "fuelStatusDiesel": diesel })
