@@ -20,6 +20,6 @@ const station = require("./routes/Station.Routes")
 
 //use Routes
 app.use("/api/v1/user", user);
-app.use("/api/v1/journey", station)
+app.use("/api/v1/station", station)
 
 module.exports = app;
